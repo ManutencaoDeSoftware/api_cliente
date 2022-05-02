@@ -28,7 +28,7 @@ public class ClienteService {
 
     public ResponseDto saveCliente(Cliente cliente) {
         responseDto.setId(clienteRepository.save(cliente).getId());
-        responseDto.setMessage("Usuário incluído com sucesso...");
+        responseDto.setMessage("Cliente incluído com sucesso...");
         responseDto.setStatus(Status.SUCCESS.value());
         return responseDto;
     }
@@ -53,13 +53,13 @@ public class ClienteService {
 
     public ResponseDto updateCliente(Cliente cliente) {
         responseDto.setId(clienteRepository.save(cliente).getId());
-        if (clienteRepository.existsById(null)) {
+        if (clienteRepository.existsById(cliente.getId())) {
         // if (cliente.getId() > 0) {
             clienteRepository.save(cliente);
-            responseDto.setMessage("Usuário alterado com sucesso...");
+            responseDto.setMessage("Cliente alterado com sucesso...");
             responseDto.setStatus(Status.SUCCESS.value());
         } else {
-            responseDto.setMessage("ID do Usuário inválido...");
+            responseDto.setMessage("ID do Cliente inválido...");
             responseDto.setStatus(Status.ERROR.value());
         }
         return responseDto;
@@ -69,10 +69,10 @@ public class ClienteService {
         responseDto.setId(id);
         if (id > 0) {
             clienteRepository.deleteById(id);
-            responseDto.setMessage("Usuário deletado com sucesso...");
+            responseDto.setMessage("Cliente deletado com sucesso...");
             responseDto.setStatus(Status.SUCCESS.value());
         } else {
-            responseDto.setMessage("ID do Usuário inválido...");
+            responseDto.setMessage("ID do Cliente inválido...");
             responseDto.setStatus(Status.ERROR.value());
         }
         return responseDto;

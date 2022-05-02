@@ -32,6 +32,7 @@ public class ClienteController {
   @PostMapping //http://localhost:8080/cliente/
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseDto saveCliente(@Valid @RequestBody Cliente cliente) {
+    System.out.println(cliente);
     return clienteService.saveCliente(cliente);
   }
 

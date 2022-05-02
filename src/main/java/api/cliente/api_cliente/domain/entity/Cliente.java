@@ -10,8 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,16 +31,18 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Column(name="cpf")
-    @Length(message="Cpf com no máximo 50 caracteres",max=50)
+    @CPF(message = "cpf inválido")
     String cpf;
     @Column(name="nome")
-    @Length(message="Nome com no máximo 50 caracteres",max=50)
+    @NotBlank(message = "nome é obrigatório")
+    @Length(message="nome com no máximo 50 caracteres",max=50)
     String nome;
     @Column(name="sexo")
-    @Length(message="Sexo com no máximo 50 caracteres",max=50)
+    @NotBlank(message = "sexo é obrigatório")
+    @Length(message="sexo precisa ser M ou F",max=1)
     String sexo;
-    
     @Column(name="datanascimento")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy", timezone = "EST")
     @Temporal(TemporalType.DATE)
     Date datanascimento;
 }
