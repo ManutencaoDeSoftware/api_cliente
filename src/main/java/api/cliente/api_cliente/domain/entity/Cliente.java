@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -35,10 +36,12 @@ public class Cliente {
     String cpf;
     @Column(name="nome")
     @NotBlank(message = "nome é obrigatório")
+    //@Pattern(regexp = "^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$")
     @Length(message="nome com no máximo 50 caracteres",max=50)
     String nome;
     @Column(name="sexo")
     @NotBlank(message = "sexo é obrigatório")
+    @Pattern(regexp = "^(?:m|M|F|f)$", message = "caractere invalido para sexo")
     @Length(message="sexo precisa ser M ou F",max=1)
     String sexo;
     @Column(name="datanascimento")
