@@ -56,8 +56,8 @@ public class ClienteController {
     return clienteService.deleteCliente(id);
   }
 
-  @PostMapping(value = "/validarCpf/{cpf}")
-  public ClienteDto validateCpf(@Valid @PathVariable String cpf) {
-    return clienteService.validateCpf(cpf);
-  }
+  // @PostMapping(value = "/validarLogin/{login}/{password}")
+  // public UserDto validateLogin(@PathVariable String login, @PathVariable String password) {
+  //   return userService.validateLogin(login, password);
+  //}
 }

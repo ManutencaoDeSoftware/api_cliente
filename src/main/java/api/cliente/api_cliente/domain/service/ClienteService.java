@@ -78,8 +78,8 @@ public class ClienteService {
         return responseDto;
     }
 
-    public ClienteDto validateCpf(String cpf) {
-        return modelMapper.map(clienteRepository.findClienteByCpf(cpf), ClienteDto.class);
-    }
+    // public UserDto validateLogin(String login, String password) {
+    //    return modelMapper.map(userRepository.findUserByLoginAndPassword(login, password), UserDto.class);
+    // }
 
 }

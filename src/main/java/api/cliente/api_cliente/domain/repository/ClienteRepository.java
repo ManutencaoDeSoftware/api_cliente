@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface ClienteRepository extends JpaRepository<Cliente,Long>  {
 
-    @Query("SELECT u FROM Cliente u WHERE u.cpf = ?1")
-    Cliente findClienteByCpf(String cpf);
+    // @Query("SELECT u FROM User u WHERE u.login = ?1 and u.senha = ?2")
+    // User findUserByLoginAndPassword(String login, String password);
 
 }
